@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+
+  <!--  link   -->
+  <th:block th:insert="fragments/link :: linkFragment" />
+
+
+  <!-- join.css    -->
+  <link rel="stylesheet" href="/css/user/join.css">
+  <!-- common.js   -->
+  <script src="/js/user/join.js" defer ></script>
+
+
+</head>
+<body>
+
+
+<div class="wrapper ">
+
+
+  <main class="container-xxl">
+    <section>
+
+      <div class="join_block">
+        <div class="header">
+          <!-- title -->
+          <h3>회원가입</h3>
+        </div>
+        <div class="body">
+          <form  class="joinform"  name="joinform" action="/user/join" method="post" >
+            <div class="mt-2 mb-2">
+              <label>이메일계정</label>&nbsp;&nbsp;
+              <span th:text="${username}" style="font-size:0.7rem;" class="username_msg"></span>
+
+              <div style="">
+                <input name="username" class="form-control username"  placeholder="이메일 계정 입력" type="email" required>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label>패스워드</label>&nbsp;&nbsp;<span th:text="${password}"  style="font-size:0.7rem;color:orange;"></span>
+              <input type="password" name="password" class="form-control" placeholder="패스워드 입력">
+            </div>
+            <div class="mb-2">
+              <label>패스워드 확인</label>&nbsp;&nbsp;<span th:text="${repassword}"  style="font-size:0.7rem;color:orange;"></span>
+              <input type="password" name="repassword" class="form-control" placeholder="패스워드 다시입력">
+            </div>
+            <div class="mb-2">
+              <label>이름</label>&nbsp;&nbsp;<span th:text="${nickname}"  style="font-size:0.7rem;color:orange;"></span>
+              <input type="text" name="nickname" class="form-control" placeholder="이름을 입력하세요">
+            </div>
+            <div class="mb-2">
+              <label>연락처</label>  <span th:text="${phone}"  style="font-size:0.7rem;color:orange;"></span>
+              <div style="display:flex;">
+                <input name="phone" class="form-control" placeholder="- 제외하고 입력">
+              </div>
+            </div>
+            <div class="mb-2">
+              <label>우편번호 검색</label>
+              <div style="display:flex;">
+                <input name="zipcode" class="form-control zipcode"  placeholder="우편번호 입력">
+                <a href="javascript:openAddrPopUp()"  class="btn btn-secondary search_addr_btn" style="width:80px;margin-left:5px;">검색</a>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label>기본 주소</label>
+              <input name="addr1" class="form-control addr1"  placeholder="기본주소 입력">
+            </div>
+            <div class="mb-2">
+              <label>상세 주소</label>
+              <input name="addr2" class="form-control" placeholder="상세주소 입력">
+            </div>
+            <div class="mb-2">
+              <button class="btn btn-success w-100 join_btn">가입요청</button>
+            </div>
+
+            <div class="mb-2">
+              <button  class="btn btn-secondary w-100">이전으로</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+      <script>
+
+      </script>
+    </section>
+
+  </main>
+
+
+</div>
+
+
+<div>
+  <!-- data-bs-target="#exampleModal"       -->
+  <button type="button" onclick="" class="btn btn-secondary email_auth_btn" data-bs-toggle="modal"   data-bs-target="#exampleModal"  style=""></button>
+
+</div>
+
+
+
+<!-- Email Auth Modal -->
+<div class="modal fade" id="exampleModal"  data-bs-backdrop="static"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">이메일 확인</h5>
+
+      </div>
+      <div class="modal-body">
+
+
+        <form name="sendEmailForm" action="" class="send-email" onsubmit="return false">
+          <div class="sendEmailIdForm">
+              <input name="email" class="form-control email" placeholder="이메일 주소를 입력하세요.">
+              <a  href="javascript:void(0)" class="btn btn-primary email_req">전송</a>
+          </div>
+        </form>
+
+        <form action="" class="hidden emailCodeForm" name="emailCodeForm"   onSubmit="return false" >
+          <div class="">
+            <input type="password" name="emailCode" class="form-control code" placeholder="메일에 전송된 코드를 입력하세요" />
+            <a  href="javascript:void(0)" class="btn btn-primary email_auth_btn_2 emailCodeForm_btn ">전송</a>
+          </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+
+
+        const search_addr_btn = document.querySelector('.search_addr_btn');
+        search_addr_btn.addEventListener('click',function(){
+           new daum.Postcode({
+                    oncomplete: function(data) {
+                        console.log(data);
+                        const zipcode = document.querySelector('.zipcode');
+                        const addr1 = document.querySelector('.addr1');
+
+                        if(data.userSelectedType==='R')
+                        {
+                            addr1.value = data.roadAddress;
+                        }
+                        else
+                        {
+                            addr1.value = data.jibunAddress;
+                        }
+                        zipcode.value=data.zonecode;
+
+                    }
+                }).open();
+
+        });
+    </script>
+
+
+
+
+
+</body>
+</html>

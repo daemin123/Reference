@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!--  link   -->
+    <th:block th:insert="fragments/link :: linkFragment" />
+
+    <!-- /css/album/main.css -->
+    <link rel="stylesheet" href="/css/user/album/main.css">
+
+    <!-- /user/album/main.js -->
+    <script src="/js/user/album/main.js" defer></script>
+
+</head>
+<body>
+    
+    <div class="wrapper">
+
+        <!-- header   -->
+        <th:block th:insert="fragments/header :: headerFragment" />
+
+        <!-- albumNav       -->
+        <th:block th:insert="fragments/nav ::albumNavFragment" />
+
+
+        <main>
+
+            <section class="layout-5 breadcrumb-block">
+                <div class="">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/">
+                                <span class="material-symbols-outlined">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">ALBUM</li>
+                        </ol>
+                    </nav>
+                </div>
+            </section>
+
+            <section>
+
+                <div class="show-block layout-5">
+                    <div class="controller">
+                        <div>
+                            <a href="javascript:void(0)" class="filter-icon">
+                                <span class="material-symbols-outlined ">tune</span>
+                            </a>
+                        </div>
+                        <div class="modal hidden" data-filter-id="category_filter">
+                            <div class="filter_title">Category Filter</div>
+                            <div class="filter_button_area">
+                                <ul>
+                                    <li><button onclick="change_btn(event)" data-filter="date" class="filter_button">Date</button></li>
+                                    <li><button onclick="change_btn(event)" data-filter="like" class="filter_button">Like</button></li>
+                                    <li><button onclick="change_btn(event)" data-filter="view" class="filter_button">View</button></li>
+                                    <li><button onclick="change_btn(event)" data-filter="image_name" class="filter_button">Name</button></li>
+                                </ul>
+                            </div>
+                            <div class="category_detail">
+                                <ul>
+                                    <li data-filter="all"> <a href="">All</a></li>
+                                    <li data-filter="character"> <a href="">Character</a></li>
+                                    <li data-filter="city"><a href="">City</a></li>
+                                    <li data-filter="map"><a href="">Map</a></li>
+                                    <li data-filter="icon"><a href="">iCON</a></li>
+                                    <li data-filter="furniture"><a href="">Furniture</a></li>
+                                    <li data-filter="car"><a href="">Car</a></li>
+                                    <li data-filter="others"><a href="">Others</a></li>
+                                </ul>
+                            </div>
+                            <button class="modal_closeBtn">CLOSE</button>
+                        </div>
+
+
+                        <div class="search">
+                            <input type="checkbox" id="search_chk">
+                            <label for="search_chk">
+                                <span class="material-symbols-outlined">search</span>
+                            </label>
+                            <input type="text">
+                        </div>
+
+                        <div>
+                            <a href="/user/album/add"  class="btn btn-primary" >앨범등록</a>
+                        </div>
+                    </div>
+                    <div class="items">
+
+                        <div class="item" th:each="item : ${list}">
+                            <div class="title">
+                                <span>이미지 제목</span>
+                            </div>
+                            <div class="image-block">
+                                <a th:href="@{/user/album/read(iamgeid=${item.images.iamgeid})}">
+                                    <img th:src="@{${item.dir}+'\s_'+${item.filename}}" class="card-img-top" alt="...">
+                                </a>
+                            </div>
+                            <div class="contents">
+                                <div>
+                                    <a href="javascript:void(0)">
+                                        <span class="material-symbols-outlined favorite">favorite</span>
+                                    </a>
+                                </div>
+                                <div><th:span th:text="${#temporals.format(item.images.createAt, 'yyyy-MM-dd HH:mm:ss')}"></th:span></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="footer-block">
+                       
+                       
+                        <div class="left">
+
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">7</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">8</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">9</a></li>
+
+
+                                        <li class="page-item">
+                                            
+                                            <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>    
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+        </main>
+
+        <footer></footer>
+    </div>
+    
+</body>
+</html>

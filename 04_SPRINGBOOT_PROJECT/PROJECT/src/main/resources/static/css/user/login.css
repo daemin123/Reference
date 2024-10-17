@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.right>div:nth-child(1){
+	padding-bottom : 5px;
+	border-bottom : 1px solid lightgray;
+}
+
+.main-block{
+	height : 480px;
+	width : 400px;
+	border-radius : 5px;
+	margin : 50px auto;
+	box-shadow : 5px 5px 5px lightgray;
+}
+.main-block label{
+	font-size : .7rem;
+}
+
+.main-block>.right{
+
+	padding : 10px;
+}
+
+.hidden {
+	
+	display : none;
+}

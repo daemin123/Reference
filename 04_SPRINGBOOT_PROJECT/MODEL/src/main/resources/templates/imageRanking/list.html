@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+
+
+  <!--  link   -->
+  <th:block th:insert="fragments/link :: linkFragment" />
+
+
+  <!-- /css/album/main.css -->
+  <link rel="stylesheet" href="/css/imageRanking/list.css">
+
+  <!-- /user/album/main.js -->
+  <script src="/js/user/album/main.js" defer></script>
+
+  <!-- /css/album/main.css -->
+  <link rel="stylesheet" href="/css/user/album/main.css">
+
+</head>
+<body>
+
+<div class="wrapper">
+
+
+  <!-- header   -->
+  <th:block th:insert="fragments/header :: headerFragment" />
+
+  <!-- nav       -->
+  <th:block th:insert="fragments/nav :: navFragment" />
+
+
+  <main>
+    <section>
+
+      <div class="show-block layout-5">
+        <div class="main-container">
+          <div class="left">
+              <div class="ranking">
+                <div>
+                  <h3>RANKING<span th:text="${title}"></span></h3>
+                </div>
+
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>NO</th>
+                    <th>TITLE</th>
+                    <th>CAT</th>
+                    <th>USER</th>
+                    <th>조회수</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="imagesRanking,obj : ${rankingList}">
+                      <td th:text="${obj.count}"></td>
+                      <td th:text="${imagesRanking.ImagesFileInfo.Images.title}"></td>
+                      <td th:text="${imagesRanking.ImagesFileInfo.Images.subCategory}"></td>
+                      <td th:text="${imagesRanking.ImagesFileInfo.Images.username}"></td>
+                      <td th:text="${imagesRanking.count}"></td>
+                    </tr>
+                  </tbody>
+
+                  <tfoot></tfoot>
+                </table>
+              </div>
+          </div>
+          <div class="right">
+              <!--              -->
+              <div class="right-header">
+                  <div class="paging">
+                    <!--  -->
+                    <div class="pagenation col-9">
+                      <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+
+                          <!-- PREV -->
+                          <li class="page-item" th:if="${pageDto.prev}">
+                            <a class="page-link" th:href="@{/imageRanking/list(pageNo=${pageDto.nowBlock * pageDto.pagePerBlock - pageDto.pagePerBlock*2 + 1} )}" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+
+                          <!-- PAGENATION -->
+                          <li class="page-item" th:each="i : ${#numbers.sequence(pageDto.startPage, pageDto.endPage)}"  >
+                            <a class="page-link" th:href="@{/imageRanking/list(pageNo=${i})}" > <span th:text="${i}"></span> </a>
+                          </li>
+
+
+                          <!-- NEXT -->
+                          <li class="page-item"  th:if="${pageDto.next}">
+                            <a class="page-link" th:href="@{/imageRanking/list(pageNo=${pageDto.nowBlock*pageDto.pagePerBlock+1} )}" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+              </div>
+              <!--              -->
+
+            <div class="items">
+
+            <!-- item             -->
+              <div class="item" th:each="imagesRanking :${list}">
+
+                <div class="count">
+                  <span>조회수 : </span><span th:text="${imagesRanking.count}"></span>
+                </div>
+                <div class="title">
+                  <div>
+                    <span>제목 : </span><span th:text="${imagesRanking.ImagesFileInfo.Images.title}"></span>
+                  </div>
+                  <div class="regdate">
+                    <span th:text="${#temporals.format(imagesRanking.regDate, 'yyyy-MM-dd')}"></span>
+                  </div>
+                </div>
+
+                <div class="image-block">
+                  <a th:href="@{/imageRanking/read(rankingId=${imagesRanking.rankingId} )}">
+                    <img th:src="@{${imagesRanking.ImagesFileInfo.dir}+'\s_'+${imagesRanking.ImagesFileInfo.filename}}"  alt="" />
+                  </a>
+                </div>
+                <div class="contents">
+                  <div>
+                    <a href="javascript:void(0)">
+                      <span class="material-symbols-outlined favorite">favorite</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+        <div class="footer-block">
+          <div class="left">
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+  <footer></footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+.offcanvas-body{
+    position:relative;
+    top:-18px;
+}
+
+.join_block{
+    width : 300px;
+    height : 100%;
+    margin:0px auto;
+}
+.join_block label{
+    font-size : .7rem;
+}
+.join_block input{
+    width: 100%;
+}
+
+.join_block input::placeholder{
+    font-size : .8rem;
+}
+/**/
+.sendEmailIdForm{
+   display:flex;
+   justify-content : center;
+   align-items : center;
+
+}
+.sendEmailIdForm>*{
+    margin: 5px;
+}
+.sendEmailIdForm a{
+    width : 80px;
+}
+
+
+
+.emailCodeForm>div{
+        display:flex;
+        justify-content : center;
+        align-items : center;
+}
+
+
+.emailCodeForm>div>*{
+    margin: 5px;
+}
+.emailCodeForm a{
+    width : 80px;
+}
+
+.hidden{
+    display:none;
+}
+
+
+.hide {
+    display: none;
+}
+
+
+.email_auth_block{
+    width : 200px;
+    height : 55px;
+    border : 1px solid gray;
+
+    position : absolute;
+    top:-77px;
+    right:0;
+
+    padding : 5px;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+
+    font-size : .7rem;
+
+    background-color :white;
+    z-index : 5;
+
+    display:none;
+
+    box-shadow : 3px 3px 3px lightgrey;;
+}
+.email_auth_block::after{
+    content:"";
+    display : block;
+    position:absolute;
+    left:75%;
+    top:53px;
+    z-index : -1;
+
+    font-size : 1rem;
+    border-top:15px solid lightgray;
+    border-bottom:15px solid transparent;
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+
+    display:none;
+}
+
+.email_auth_block input::placeholder{
+    font-size : .7rem;
+}
+.email_auth_block input{
+    font-size : .7rem;
+}
+.email_auth_block>div{
+    display :flex;
+    justify-content : center;
+    align-items : center;
+}
+.email_auth_block>div a{
+    width : 65px;
+
+    font-size :.7rem;
+
+    display:flex;
+    justify-content : center;
+    align-items : center;
+}
+.offcanvas-header{
+    display:flex;
+    justify-content : right;
+}
+
+/*
+지영 학생
+2024-04-14 GOOD~
+*/
+
+/*body{
+    margin-top: 150px;
+}*/
+
+
+.join_block>.header{
+    display: flex;
+    position: relative;
+    top:-15px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.join_block>.header {
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+}
+.join_block>.header>h3{
+    align-items: center;
+    justify-content: center;
+
+}
+
+.join_block>.header>.underline{
+    width: 130px;
+    height: 3px;
+    display: flex;
+    position: relative;
+    border-bottom: 3px solid darkcyan;
+    top:0px;
+    left: 0px;
+}
+
+.offcanvas .body {
+    height : 90%;
+    padding : 10px;
+    border: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.offcanvas .body::-webkit-scrollbar{
+    display:none;
+
+}
+
+.offcanvas .body form{
+
+
+}
+
+
+.offcanvas  .body label{
+    font-size : .7rem;
+    margin-bottom: 5px;
+}
+
+
+
+.offcanvas  .body>.joinform>.mb-3-1{
+   margin-top: 80px;
+
+}
+
+.offcanvas  .joinform .join_btn_block{
+
+}
+
+.offcanvas  .joinform a{
+
+    font-size: .7rem;
+    color : white;
+    border-radius: 5px;
+    background-color: darkcyan;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
+}
+.email_code a{
+
+}
+
+.offcanvas  .joinform .join_btn_block button{
+    width: 80%;
+    height: 45px;
+    font-size: 1rem;
+    color : white;
+    border-radius:5px;
+    background-color: darkcyan;
+}
+
+
+
+.hide_bg{
+    display:none;
+}
+
+.offcanvas{
+
+}
+.join_block_bg{
+    position : absolute;
+    left : 0px;
+    top : 0px;
+    height : 100%;
+    width : 100%;
+    display:flex;
+    justify-content:center;
+    align-items : center;
+
+    background-color : white;
+    z-index : 1;
+    opacity : 0.5;
+
+    display: none;
+}
+
+

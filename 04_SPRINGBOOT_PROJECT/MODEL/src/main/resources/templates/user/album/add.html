@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <!--  link   -->
+    <th:block th:insert="fragments/link :: linkFragment" />
+
+
+    <!-- /css/album/add.css -->
+    <link rel="stylesheet" href="/css/user/album/add.css">
+    <!--    -->
+    <script src="/js/user/album/add.js" defer></script>
+
+
+ 
+
+
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- header   -->
+    <th:block th:insert="fragments/header :: headerFragment" />
+
+
+    <!-- albumNav       -->
+    <th:block th:insert="fragments/nav ::albumNavFragment" />
+
+
+
+    <section class="layout-5 breadcrumb-block">
+        <div class="">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">
+                            <span class="material-symbols-outlined">home</span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/user/album/main">
+                            <span class="">ALBUM</span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">ADD</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+
+
+    <main  class="container-xxl">
+
+
+
+        <!-- LEFT -->
+        <section class="product_img_block">
+            <div class="product_img">
+                <div class="upload-box">
+                    <div class="plus">+</div>
+                </div>
+            </div>
+
+            <div class="preview_img_block">
+                <label>PREVIEW</label>
+                <div id="preview">
+
+                </div>
+            </div>
+        </section>
+
+        <section class="product_info_block">
+            <form  onsubmit="return false" name="albumform" >
+                <div>
+                    <label>USER : </label>
+                    <input name="username" placeholder="example@example.com"  th:value="${#authentication.name}"  class="form-control"  required readonly>
+                </div>
+                <div>
+                    <label>TITLE : </label>
+                    <input name="title" class="form-control" placeholder="제품명" required>
+                </div>
+                <div class="">
+                    <label>MAIN_CATEGORY : </label>
+                    <select name="main_category"  class="form-select main_category">
+                        <option value="image" selected>IMAGE</option>
+                        <option value="music">MUSIC</option>
+                    </select>
+                </div>
+                <div class="sub_category image-cat">
+                    <label>SUB_CATEGORY(IMAGE) : </label>
+                    <select name="sub_category"  class="form-select">
+                        <option value="Character" selected>Character</option>
+                        <option value="City">City</option>
+                        <option value="Map">Map</option>
+                        <option value="Icon">Icon</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Car">Car</option>
+                        <option value="Place">Place</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="sub_category music-cat hidden">
+                    <label>SUB_CATEGORY(MUSIC) : </label>
+                    <select name="sub_category"  class="form-select">
+                        <option value="Jazz" selected>Jazz</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Classic">Classic</option>
+                        <option value="Progressive">Progressive</option>
+                        <option value="Advertisement">Advertisement</option>
+                        <option value="HeavyMetal">HeavyMetal</option>
+                        <option value="Pop">Pop</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div>
+                    <label>DESCRIPTION : </label>
+                    <textarea name="description" class="form-control" required></textarea>
+                </div>
+                <div style="display:flex;justify-content: space-between;">
+
+                </div>
+                <div>
+                    <button  class="btn btn-primary add_album_btn w-100">등록</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <!--  footer fragment      -->
+   
+    <footer>
+
+    </footer>
+</div>
+
+
+
+
+</body>
+</html>

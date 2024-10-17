@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block th:fragment="headerFragment" >
+    <div class="top-header layout-5">
+
+        <div class="left">
+
+        </div>
+
+        <div class="center">
+            <div class="top-banner">
+
+            </div>
+            <ul>
+                <th:block class="" sec:authorize="isAuthenticated()" >
+                    <li class="item" style="">
+                        <span sec:authentication="principal.username"></span>
+                        <span> 님</span>
+                    </li>
+                </th:block>
+
+                <li class="item">
+                    <a href="/">HOME</a>
+                </li>
+
+                <th:block class="top-header-menu" sec:authorize="!isAuthenticated()" >
+                    <li class="item">
+                        <a href="/login">LOGIN</a>
+                    </li>
+                    <li class="item">
+                        <a href="/user/join">JOIN</a>
+                    </li>
+                </th:block>
+
+                <th:block class="" sec:authorize="isAuthenticated()" >
+                    <li class="item">
+                        <a method="post" href="/user/myinfo">MYINFO</a>
+                    </li>
+
+                    <li class="item">
+                        <form method="post" action="/logout">
+                            <button  class="" >LOGOUT</button>
+                        </form>
+                    </li>
+                </th:block>
+
+
+<!--                <li>-->
+<!--                    <a href="">-->
+<!--                        <span class="material-symbols-outlined">MENU</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+
+<!--                -->
+            </ul>
+        </div>
+        <!--
+        <div class="right">
+            <a href="/index.html">
+               <img src="assets/top-header-left.jpg" alt="">
+            </a>
+        </div>
+         -->
+    </div>
+</th:block>
+
+
+
+<th:block th:fragment="mainHeaderFragment" >
+    <div class="top-header layout-5">
+
+        <div class="left">
+
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <a href="">
+                            [공지사항] 01관리자입니다.
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="">
+                            <span>
+                            [공지사항] 02관리자입니다.---------------------------------------
+                            </span>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="">
+                            [공지사항] 03관리자입니다.
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="center">
+            <div class="top-banner">
+
+            </div>
+            <ul>
+                <th:block class="" sec:authorize="isAuthenticated()" >
+                    <li class="item" style="">
+                        <span sec:authentication="principal.username"></span>
+                        <span> 님</span>
+                    </li>
+                </th:block>
+
+                <li class="item">
+                    <a href="/">HOME</a>
+                </li>
+
+                <th:block class="top-header-menu" sec:authorize="!isAuthenticated()" >
+                    <li class="item">
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#exampleModal">LOGIN</a>
+                    </li>
+                    <li class="item">
+                        <a href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">JOIN</a>
+                    </li>
+                </th:block>
+
+                <th:block class="" sec:authorize="isAuthenticated()" >
+                    <li class="item">
+                        <a method="post" href="/user/myinfo">MYINFO</a>
+                    </li>
+
+                    <li class="item">
+                        <form method="post" action="/logout">
+                            <button  class="" >LOGOUT</button>
+                        </form>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </div>
+
+
+
+        <!-- 오프캔버스 - 회원가입   -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="width:450px;">
+
+            <div class="join_block_bg ">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+            <div class="offcanvas-header" >
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                    <div class="join_block" style="width:400px;margin:0 auto;">
+                        <div class="header">
+                            <h3 id="offcanvasRightLabel" >회원가입</h3>
+                            <div class="underline"></div>
+
+                        </div>
+                        <div class="body" style="width:100%;padding:10px;">
+                            <form  class="joinform"  name="joinform" action="/user/join" method="post" onsubmit="return false" >
+                                <div class="mt-1 mb-1">
+                                    <label>이메일계정</label>&nbsp;&nbsp;
+                                    <span th:text="${username}" style="font-size:0.7rem;" class="username_msg"></span>
+                                    <div style="display:flex;position:relative;">
+                                        <input name="username" class="form-control username"  placeholder="이메일 계정 입력" type="email" required>
+                                        <a href="javascript:void(0)"  class="btn btn-secondary email_auth_btn" style="width:80px;margin-left:5px;">인증</a>
+
+                                        <div class="email_auth_block">
+                                                <div>
+                                                    <input type="text"  class="form-control m-1 email_code" th:placeholder="CODE">
+                                                    <a class="btn btn-primary m-1 emailCodeForm_btn">전송</a>
+                                                </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="mb-1">
+                                    <label>패스워드</label>&nbsp;&nbsp;<span th:text="${password}"  style="font-size:0.7rem;color:orange;" class="password_msg"></span>
+                                    <input type="password" name="password" class="form-control" placeholder="패스워드 입력">
+                                </div>
+                                <div class="mb-1">
+                                    <label>패스워드 확인</label>&nbsp;&nbsp;<span th:text="${repassword}"  style="font-size:0.7rem;color:orange;"  class="repassword_msg"></span>
+                                    <input type="password" name="repassword" class="form-control" placeholder="패스워드 다시입력">
+                                </div>
+                                <div class="mb-1">
+                                    <label>이름</label>&nbsp;&nbsp;<span th:text="${nickname}"  style="font-size:0.7rem;color:orange; " class="nickname_msg"></span>
+                                    <input type="text" name="nickname" class="form-control" placeholder="이름을 입력하세요">
+                                </div>
+                                <div class="mb-1">
+                                    <label>연락처</label>  <span th:text="${phone}"  style="font-size:0.7rem;color:orange;" class="phone_msg"></span>
+                                    <div style="display:flex;">
+                                        <input name="phone" class="form-control" placeholder="- 제외하고 입력">
+                                    </div>
+                                </div>
+                                <div class="mb-1">
+                                    <label>우편번호 검색</label>
+                                    <div style="display:flex;">
+                                        <input name="zipcode" class="form-control zipcode"  placeholder="우편번호 입력">
+                                        <a href="javascript:void(0)"  class="btn btn-secondary search_addr_btn" style="width:80px;margin-left:5px;">검색</a>
+                                    </div>
+                                </div>
+                                <div class="mb-1">
+                                    <label>기본 주소</label>
+                                    <input name="addr1" class="form-control addr1"  placeholder="기본주소 입력">
+                                </div>
+                                <div class="mb-1">
+                                    <label>상세 주소</label>
+                                    <input name="addr2" class="form-control" placeholder="상세주소 입력">
+                                </div>
+                                <div class="mt-3 join_btn_block">
+                                    <button class=" w-100 join_btn">가입요청</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+
+            <script>
+
+
+                const search_addr_btn = document.querySelector('.search_addr_btn');
+                search_addr_btn.addEventListener('click',function(){
+                    new daum.Postcode({
+                        oncomplete: function(data) {
+                            console.log(data);
+                            const zipcode = document.querySelector('.zipcode');
+                            const addr1 = document.querySelector('.addr1');
+
+                            if(data.userSelectedType==='R')
+                            {
+                                addr1.value = data.roadAddress;
+                            }
+                            else
+                            {
+                                addr1.value = data.jibunAddress;
+                            }
+                            zipcode.value=data.zonecode;
+
+                        }
+                    }).open();
+
+                });
+            </script>
+        <!--
+        모달 login
+        -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                            <div style="text-align:right;">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <main>
+                                <section>
+                                    <div>
+                                        <form action="/login" method="post" >
+                                            <div class="item image">
+
+                                            </div>
+                                            <div class="item title">
+                                                <div class="logo">
+                                                    <img src="/assets/logo.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <input type="text" class="form-control w-100" placeholder="아이디를 입력하세요" name="username">
+                                            </div>
+                                            <div class="item">
+                                                <input type="password"  class="form-control w-100"  placeholder="패스워드를 입력하세요" name="password">
+                                            </div>
+                                            <div class="item submenu">
+                                                <div>
+                                                    <input type="checkbox" class="form-check-input" id="rememberMe" name="remember-me">
+                                                    <label for="rememberMe">로그인 상태 유지</label>
+                                                </div>
+                                                <div>
+                                                    <a href="/user/confirmId">아이디 분실</a> |
+                                                    <a href="/user/confirmPw">패스워드 분실</a>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <label for=""></label>
+                                                <button class="btn btn-primary w-100">로그인</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+                            </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</th:block>
+
+
+</body>
+</html>

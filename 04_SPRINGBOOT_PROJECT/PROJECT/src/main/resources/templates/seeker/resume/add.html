@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Add</title>
+
+    <!-- link -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <link rel="stylesheet" href="/css/seeker/resume/add.css">
+    <script src="/js/seeker/resume/add.js" defer></script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <!-- header -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+    </header>
+    <main class="layout-150">
+        <section>
+            <div style="margin:30px auto;">
+                <h2>이력서 작성</h2>
+            </div>
+            <form onsubmit="return false" action="/seeker/resume/add" name="resumeAddForm" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title">제목:</label>
+                    <input type="text" id="title" name="title"   class="form-control w-100" required  />
+                </div>
+                <div class="basic-info">
+
+                    <div class="photo-block">
+                        <div id="photoUpload">
+                            사진을 드래그 앤 드롭 하거나 클릭하여 업로드하세요.
+                            <img id="previewImage" src="" alt="사진 미리보기" />
+                        </div>
+                        <input type="file" id="photo" name="file" accept="image/*" style="display: none;" required />
+                    </div>
+                    <div class="seeker-info">
+                        <div>
+                            <label for="name">이름:</label>
+                            <input type="text" id="name" name="name" th:value="${jobSeekerDto.username}"  class="form-control w-100" required  />
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email"  th:value="${jobSeekerDto.email}" class="form-control w-100"required />
+                        </div>
+                        <div>
+                            <label for="phone">휴대폰번호:</label>
+                            <input type="text" id="phone"  name="phone"   th:value="${jobSeekerDto.tel}" class="form-control w-100" required  />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin:30px auto;">
+                    <h3>학력</h3>
+                </div>
+
+                <div>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>출신학교</td>
+                                <td> <input type="text" id="schoolName" name="schoolName"  class="w-100 form-control" required /></td>
+                                <td>전공</td>
+                                <td> <input type="text" id="major" name="major" class="w-100 form-control" required /></td>
+                            </tr>
+                            <tr>
+                                <td>졸업년도</td>
+                                <td><input type="datetime-local"  class="w-100 form-control" id="graduationYear" name="graduationYear" required /></td>
+                                <td colspan="2"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <hr>
+
+                <div style="margin:30px auto;display:flex;justify-content:space-between;margin-bottom :15px;">
+                    <h3>경력</h3><button type="button" onclick="addCareer()">+</button>
+                </div>
+                <div id="careerContainer">
+                    <!-- 경력 항목이 추가될 곳 -->
+                </div>
+                <hr>
+
+                <div style="margin:30px auto;display:flex;justify-content:space-between;margin-bottom :15px;">
+                    <h3>기술 및 자격증</h3><button type="button" onclick="addCertification()">+</button>
+                </div>
+                <div>
+                    <table class="certificationTable table w-100">
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <hr>
+                <div style="margin:30px auto;">
+                    <h3>자기소개</h3>
+                </div>
+                <div>
+                    <label for="summary">자기소개서:</label>
+                    <textarea id="summary" name="summary" class="form-control" required style="height:300px;"></textarea>
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="btn-styles submit_btn btn btn-success mt-3" style="margin-top:15px;">작성완료</a>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <!-- footer -->
+        <th:block th:insert="~{fragments/footer :: footerFragment}" />
+    </footer>
+</div>
+</body>
+</html>

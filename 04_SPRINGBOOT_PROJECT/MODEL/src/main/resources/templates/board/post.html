@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="fragments/link :: linkFragment" />
+
+    <!-- common.css    -->
+    <link rel="stylesheet" href="/css/common.css">
+
+    <style>
+        .msg{
+            font-size : 0.5rem;
+            color : red;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="wrapper">
+
+
+    <!-- header   -->
+    <th:block th:insert="fragments/header :: headerFragment" />
+
+    <!-- nav       -->
+    <th:block th:insert="fragments/nav :: navFragment" />
+
+    <main  class="layout-5">
+        <section class="row">
+
+            <!-- aside
+            <div class="bd-example bg-secondary col-2" style="height:90vh;width:200px;" >
+                <div class="btn-group-vertical p-3" role="group" aria-label="Vertical button group">
+
+                    <button type="button" class="btn btn-dark m-1" style="width:150px;">MENU1</button>
+                    <button type="button" class="btn btn-dark m-1" style="width:150px;">MENU2</button>
+                    <button type="button" class="btn btn-dark m-1" style="width:150px;">MENU3</button>
+                    <button type="button" class="btn btn-dark m-1" style="width:150px;">MENU4</button>
+                    <button type="button" class="btn btn-dark m-1" style="width:150px;">MENU5</button>
+                    <button type="button" class="btn btn-dark m-1" style="width:150px;">MENU6</button>
+
+                </div>
+            </div>
+            -->
+
+            <!-- contents -->
+            <div class="col">
+                <!-- breadcrumb -->
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb  mt-2">
+                        <li class="breadcrumb-item"><a href="#">HOME</a></li>
+                        <li class="breadcrumb-item"><a href="#">BOARD</a></li>
+                        <li class="breadcrumb-item"><a href="#">LIST</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">POST</li>
+                    </ol>
+                </nav>
+                <!-- title -->
+                <h3>BOARD POST</h3>
+
+
+                <form action="/board/post" method="post" enctype="multipart/form-data">
+                    <div class="mb-3 w-50">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>&nbsp;&nbsp;<span class="msg" th:text="${username}"></span>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="username" th:value="${#authentication.name}" readonly>
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="ex2" class="form-label">Title</label>&nbsp;&nbsp;<span class="msg" th:text="${title}"></span>
+                        <input type="text" class="form-control" id="ex2" placeholder="Title" name="title">
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+                    </div>
+                    <div class="mb-3  w-50">
+                        <label for="formFile" class="form-label">Default file input example</label>
+                        <input class="form-control" type="file" id="formFile" name="files" multiple>
+                    </div>
+                    <div class="mb-3  w-50" >
+                        <button    class="btn btn-primary">글쓰기</button>
+                        <input  class="btn btn-primary"  type="reset" value="다시쓰기">
+                    </div>
+                </form>
+
+
+            </div>
+        </section>
+
+
+
+        <section class=""></section>
+        <section></section>
+    </main>
+    <footer>
+
+
+    </footer>
+
+</div>
+
+
+
+<!-- axios -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- common.js   -->
+<script src="/js/common.js"></script>
+</body>
+</html>

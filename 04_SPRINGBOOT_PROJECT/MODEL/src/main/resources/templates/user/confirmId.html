@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <!--  link   -->
+    <th:block th:insert="fragments/link :: linkFragment" />
+
+
+    <!-- confirmId.css    -->
+    <link rel="stylesheet" href="/css/user/confirmId.css">
+
+    <!-- confirmId.js    -->
+    <script src="/js/user/confirmId.js" defer></script>
+
+</head>
+<body>
+
+
+<div class="wrapper ">
+
+    <header>
+        <!-- th:fragment     -->
+
+    </header>
+
+    <main class="container-xxl">
+        <section>
+
+
+            <div class="confirm_block">
+                <div class="header">
+                    <!-- title -->
+                    <h3>ID찾기</h3>
+                </div>
+                <div class="body">
+                    <form  class="checkIdform"  name="checkIdform" action="/user/confirmId" method="post" >
+                        <div class="mb-2">
+                            <label>이름</label>&nbsp;&nbsp;<span th:text="${nickname}"  style="font-size:0.7rem;color:orange;"></span>
+                            <input type="text" name="nickname" class="form-control" placeholder="이름을 입력하세요">
+                        </div>
+                        <div class="mb-2">
+                            <label>연락처</label>  <span th:text="${phone}"  style="font-size:0.7rem;color:orange;"></span>
+                            <div style="display:flex;">
+                                <input name="phone" class="form-control" placeholder="- 제외하고 입력">
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <a href="javascript:void(0)" class="btn btn-success w-100 confirmId_btn">ID 확인</a>
+                        </div>
+
+                        <div class="mb-2">
+                            <a href="/login" class="btn btn-secondary w-100">이전으로</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+
+
+</body>
+</html>
