@@ -7,31 +7,7 @@ DEVELOPMENT MOTIVATION
 > > 보다 더 간편하게 정보를 수집할 수 있는 사이트 <br> 
  
 
-HISTORY
----
-[TOTAL](DOCUMENT/HISTORY/TOTAL) | [나재현](https://github.com/Najaehyun0913) | [이동환](https://github.com/donghwan12) | [박정현](https://github.com/niangsoul) | [최원준](https://github.com/piepenie) |
-
-
-PLANS
----
- |LANGUAGE|PLAN|IMPLEMENT|DESCRIPTION|
- |-|-|-|-|
- |JAVA|2024/04/08 ~ 2024/04/23|-|-|
- |JSP/SERVLET|2024/04/24 ~ 2024/04/28|-|-|
- |SPRING STS3|2024/04/28 ~ 2024/05/14|-|-|
- |SPRING BOOT|2024/05/15 ~ 2024/06/30|-|-|
  
- 
-
-MEMBERERS
---- 
-|NAME|ROLE|DETAILS|DESCRIPTION| 
-|---|---|---|---|
-|정우균|FN| FrontController / Docment 관리 / Dependencies  관리 |---|
-|최원준|FN| 모든PAGE와 서버간 REQ / RESP |---|
-|나재현|BN| 유저공통 - ID찾기 / PW찾기 / 회원가입 유효성검사 |---|
-|이동환|BN| SEEKER 이력서 CRUD / 공지사항 CRUD |---|
-|박정현|BN| OFFER 기업정보 CRUD / 기업공고 CRUD |---|
 
 SKILLS
 ---
